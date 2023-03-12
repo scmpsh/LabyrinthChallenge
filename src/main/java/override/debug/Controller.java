@@ -10,6 +10,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
+import override.bot.LabyrinthBot;
 import override.example.PassiveLabyrinthBot;
 import override.example.VolkLabyrinthBot;
 import override.logic.Game;
@@ -22,11 +23,11 @@ public class Controller {
     /**
      * Закинь сюда своего бота
      */
-    LabyrinthPlayer yourBot = new VolkLabyrinthBot();
+    LabyrinthPlayer yourBot = new LabyrinthBot();
     /**
      * Ну или сюда
      */
-    LabyrinthPlayer testBot = new PassiveLabyrinthBot();
+    LabyrinthPlayer testBot = new VolkLabyrinthBot();
 
     @FXML
     private Pane mainPane;
@@ -118,8 +119,8 @@ public class Controller {
             mainGridPane.getChildren().clear();
 
             mainGridPane.setGridLinesVisible(true);
-            for (int i = 0; i < game.getGameState().HEIGHT; ++i) {
-                for (int j = 0; j < game.getGameState().WIDTH; ++j) {
+            for (int i = 0; i < GameState.HEIGHT; ++i) {
+                for (int j = 0; j < GameState.WIDTH; ++j) {
                     StackPane pane = new StackPane();
                     String style = "-fx-background-radius: 10em 10em;";
                     if (myMap[i][j] == -1) {
